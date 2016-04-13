@@ -9,7 +9,11 @@
 }
 
 #graph3 {
-    float: right;
+    float: left;
+}
+
+#graph4 {
+    margin-top: 80px;
 }
 
 #boxplot_title {
@@ -17,9 +21,16 @@
 }
 
 p {
-    text-align: center;
+    text-align: left;
     font-size: 20px;
     border: 0px;
     margin: 0px;
     margin-top: 90px;
+    margin-left: 80px;
+}
+
+#title {
+    margin: 0px;
+    font-size: 40px;
+    text-align: center;
 }

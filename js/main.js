@@ -152,31 +152,32 @@ var boxplot2 = [trace5]
 
 //Code for creating heat map  
 var heatData = [{
-    //col headers
     x: drugNames,
-    //row headers
     y: bactNames,
-    //row data (in arrays)
     z: bactData,
     type: 'heatmap',
-    colorscale: 'Picnic',
+    colorscale: [[0, 'rgb(166,206,227)'], [0.05, 'rgb(31,120,180)'], [0.5, 'rgb(251,154,153)'], [1, 'rgb(227,26,28)']],
     showscale: true   
 }]
 
 //https://plot.ly/javascript/heatmap-and-contour-colorscales/#custom-colorscale-for-contour-plot
 var heatLayout = {
-    title: 'Annotated Heatmap',
+    title: 'Minimum inhibitory concentration (MIC) of drug needed to prevent bacterial growth',
     annotations: [],
     xaxis: {
-    ticks: '',
-    side: 'top'
+        ticks: '',
+        side: 'top'
     },
     yaxis: {
-    ticks: '',
-    ticksuffix: ' ',
-    width: 300,
-    height: 300,
-    autosize: false
+        ticks: '',
+        ticksuffix: ' ',
+        width: 1000,
+        height: 1000,
+        autosize: true,
+    },
+    margin: {
+        l: 220,
+        pad: 4
     }
 }
 
