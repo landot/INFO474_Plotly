@@ -1,5 +1,45 @@
 'use strict';
 
+//Bacteria Names (in-order)
+var bactNames = [
+    'Aerobacter aerogenes',
+    'Brucella abortus',
+    'Brucella anthracis',
+    'Diplococcus pneumoniae',
+    'Escherichia coli',
+    'Klebsiella pneumoniae',
+    'Mycobacterium tuberculosis',
+    'Proteus vulgaris',
+    'Pseudomonas aeruginosa ',
+    'Salmonella (Eberthella) typhosa ',
+    'Salmonella schottmuelleri ',
+    'Staphylococcus albus ',
+    'Staphylococcus aureus ',
+    'Streptococcus fecalis ',
+    'Streptococcus hemolyticus ',
+    'Streptococcus viridans'
+ ]
+ 
+var bactData = [
+    [870.0, 1.0, 1.6],
+    [1.0, 2.0, 0.02],
+    [0.001, 0.01, 0.006999999999999999],
+    [0.005, 11.0, 10.0],
+    [100.0, 0.4, 0.1],
+    [850.0, 1.2, 1.0],
+    [800.0, 5.0, 2.0],
+    [3.0, 0.1, 0.1],
+    [850.0, 2.0, 0.4],
+    [1.0, 0.4, 0.008],
+    [10.0, 0.8, 0.09],
+    [0.006999999999999999, 0.1, 0.001],
+    [0.03, 0.03, 0.001],
+    [1.0, 1.0, 0.1],
+    [0.001, 14.0, 10.0],
+    [0.005, 10.0, 40.0]
+ ]
+
+
 //CHART 1 DATA (grouped bar chart)
 //mean drug use for each bacteria (gram positive)
 var data1 = [0.15, 5.16, 8.59]
@@ -44,6 +84,9 @@ var data8 = [290.87,1.01,33.5,284.07,269,1.07,284.13,.47,3.63]
 var drugNames = ['Penicilin', 'Streptomycin', 'Neomycin']
 
 
+
+
+//Code for creating grouped bar chart
 var trace1 = {
     x: groupings,
     y: [data4[0], data4[1], data4[2]],
@@ -77,6 +120,8 @@ var layout = {
         title: 'Types of bacteria'
     }
 };
+
+//Code for creating Boxplots
 var trace4 = {
     y: data7,
     type: 'box',
@@ -104,8 +149,41 @@ var boxplot_Layout = {
 var boxplot1 = [trace4]
 var boxplot2 = [trace5]
 
+
+//Code for creating heat map  
+var heatData = [{
+    //col headers
+    x: drugNames,
+    //row headers
+    y: bactNames,
+    //row data (in arrays)
+    z: bactData,
+    type: 'heatmap',
+    colorscale: 'Picnic',
+    showscale: true   
+}]
+
+//https://plot.ly/javascript/heatmap-and-contour-colorscales/#custom-colorscale-for-contour-plot
+var heatLayout = {
+    title: 'Annotated Heatmap',
+    annotations: [],
+    xaxis: {
+    ticks: '',
+    side: 'top'
+    },
+    yaxis: {
+    ticks: '',
+    ticksuffix: ' ',
+    width: 300,
+    height: 300,
+    autosize: false
+    }
+}
+
+
 Plotly.newPlot('graph1', data, layout);
 Plotly.newPlot('graph2', boxplot1, boxplot_Layout);
 Plotly.newPlot('graph3', boxplot2, boxplot_Layout);
+Plotly.newPlot('graph4', heatData, heatLayout);
 
 
